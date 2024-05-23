@@ -9,13 +9,21 @@ r = requests.get(url, headers = headers)
 
 response_dict = r.json()
 
-#print(response_dict.keys())
+######################################################
+# Explorando chaves do json
+print(response_dict.keys())
 
-#print(response_dict["total_count"])
-#print(f"{not response_dict['incomplete_results']}")
+######################################################
+# Avaliando quantidade de repositórios
+print(response_dict["total_count"])
 
+######################################################
+# Acessando os repositórios
 repo_dicts = response_dict["items"]
-#print(repo_dicts)
+print(repo_dicts)
+
+######################################################
+#Explorando o primeiro repositório
 
 #repo_dict = repo_dicts[0]
 #print(repo_dict)
@@ -24,7 +32,8 @@ repo_dicts = response_dict["items"]
 #for key, value in sorted(repo_dict.items()):
 #    print(key)
 
-
+######################################################
+# Armazenando os repositórios em um dataframe
 columns = ["name", "stargazers_count", "html_url", "created_at", "updated_at", "description"]
 
 data_frame_1 = pd.DataFrame(repo_dicts, columns = columns)
